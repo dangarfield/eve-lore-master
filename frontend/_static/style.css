@@ -1,0 +1,6 @@
+.alert {
+    padding: 6px 12px;
+}
+.alert.alert-info {
+    background-color: inherit;
+}

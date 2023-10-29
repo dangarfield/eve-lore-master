@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build:frontend"
+  functions = "backend/functions"
+  publish = "./frontend/_static"
+
+[[redirects]]
+  from = "/ask-question*"
+  to = "/.netlify/functions/ask-question"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

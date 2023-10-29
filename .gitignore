@@ -1,0 +1,8 @@
+# Local Netlify folder
+.netlify
+_data
+_eve-vector-store
+node_modules
+.DS_Store
+.env
+.env.local
