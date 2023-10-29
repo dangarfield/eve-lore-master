@@ -4,3 +4,21 @@
 .alert.alert-info {
     background-color: inherit;
 }
+.history .message {
+    /* color: white; */
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    /* margin-bottom: 30px; */
+    max-width: 90%;
+    position: relative;
+    /* background: #86BB71; */
+    background: #15181c;
+}
+.history .message.ai {
+    background: rgb(38, 25, 66);
+}
+/* .history .bi.ai {
+    color: rgb(38, 25, 66);
+} */
