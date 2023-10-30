@@ -1,3 +1,79 @@
+@font-face {
+    font-family: Shentox;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-SemiBold.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-SemiBold.woff) format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: Shentox;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-Medium.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-Medium.woff) format('woff');
+    font-weight: 500;
+    font-style: normal
+}
+@font-face {
+    font-family: Shentox;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-Regular.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-Regular.woff) format('woff');
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: Shentox;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-Light.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Shentox-Light.woff) format('woff');
+    font-weight: 300;
+    font-style: normal
+}
+@font-face {
+    font-family: Rogan;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-SemiBold.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-SemiBold.woff) format('woff');
+    font-weight: 600;
+    font-style: normal
+}
+@font-face {
+    font-family: Rogan;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-Light.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-Light.woff) format('woff');
+    font-weight: 300;
+    font-style: normal
+}
+@font-face {
+    font-family: Rogan;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-Medium.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-Medium.woff) format('woff');
+    font-weight: 500;
+    font-style: normal
+}
+@font-face {
+    font-family: Rogan;
+    font-display: swap;
+    src: url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-Regular.woff2) format('woff2'),url(https://web.ccpgamescdn.com/aws/webfonts/shentox/webfonts-2.0/Rogan-Regular.woff) format('woff');
+    font-weight: 400;
+    font-style: normal
+}
+
+body {
+    background-color: #171717;
+    /* background-color: blue; */
+    color: #ffffff;
+    font-family: 'Shentox', 'Rogan', sans-serif;
+    background-image: url(https://images.ctfassets.net/7lhcm73ukv5p/1mv6Tg8PUsMWyGauWckSOo/5be5f00d5fb6d445f420b7a1c669fd26/star-bg.jpg?w=2400&q=75&fm=webp);
+
+}
+h1 {
+    font-size: 72px;
+    font-weight: 500;
+}
+.divider {
+    width: 150px;
+    height: 2px;
+    background-color: #ba1f7e;
+    display: block;
+}
+
 .alert {
     padding: 6px 12px;
 }
@@ -8,17 +84,89 @@
     /* color: white; */
     padding: 18px 20px;
     line-height: 26px;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 7px;
     /* margin-bottom: 30px; */
     max-width: 90%;
     position: relative;
     /* background: #86BB71; */
-    background: #15181c;
+    background: #111528;
+    white-space: pre-line;
+    -webkit-clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%);
+    clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%);
+}
+.shadow {
+    -webkit-filter: drop-shadow(0 0 1rem #000);
+    filter: drop-shadow(0 0 1rem black);
 }
 .history .message.ai {
-    background: rgb(38, 25, 66);
+    background: #ba1f7e;
 }
-/* .history .bi.ai {
-    color: rgb(38, 25, 66);
-} */
+.eve-icon {
+    width: 44px;
+    height: 46px;
+}
+.loader-a {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 16px 0 #fff, -16px 0 #fff;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+  color: red;
+  margin: 0 5px 0px 5px;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #FFF2;
+    box-shadow: 16px 0 #FFF2, -16px 0 #FFF;
+  }
+  50% {
+    background-color: #FFF;
+    box-shadow: 16px 0 #FFF2, -16px 0 #FFF2;
+  }
+  100% {
+    background-color: #FFF2;
+    box-shadow: 16px 0 #FFF, -16px 0 #FFF2;
+  }
+}
+.btn-outline-info {
+    color: #5ccbcb;
+    border-color: #5ccbcb;
+    text-transform: uppercase;
+    /* -webkit-clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%);
+    clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%); */
+}
+.btn-outline-info:hover {
+    background-color: #5ccbcb;
+    border-color: #5ccbcb;
+}
+
+/* 
+Quick EVE Palette
+Website
+    bg      
+    text    ffffff
+    text li 
+    card-bg 111528
+    acc pi  ba1f7e
+    acc bl  5ccbcb
+Inactive
+    back    171717
+    side    1d1d1d
+
+Active
+    back    0a0e0e
+    side    131b1b
+    main    202626
+
+Color
+    sharp   5fccc8
+    little  439390
+    bg      375057
+
+Text
+    light   d8dcdd
+*/

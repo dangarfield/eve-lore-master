@@ -2,6 +2,9 @@ const STATUSES = { READY: 'READY', WAITING_FOR_AI: 'WAITING_FOR_AI', ERROR: 'ERR
 
 const history = []
 
+const PLAYER_SVG = '<span class="eve-icon mt-2 ms-2 shadow"><svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.4525 0.651446V29.1032H0.75V24.9852C0.75 24.9852 6.70547 22.5669 9.11062 21.4185C11.0761 20.48 10.5773 17.1069 10.5773 17.1069C10.5773 17.1069 9.95391 16.5294 9.79969 15.5286C9.64219 14.5311 9.46828 13.3925 9.46828 13.3925C9.46828 13.3925 8.94328 13.491 8.68734 12.8314C8.43469 12.1719 8.37563 11.9324 8.22141 11.1941C8.06719 10.4558 7.79812 8.72988 8.45437 8.7791C8.52 8.78566 8.81531 8.9891 8.80219 8.58879C8.80219 8.58879 7.90969 1.0091 14.4525 0.651446ZM19.2891 17.1069C19.2891 17.1069 19.3219 17.0774 19.3645 17.0249V2.34785C19.0003 1.9541 18.5639 1.60301 18.0356 1.32738V29.1064H19.3645V19.3874C19.1217 18.2488 19.2891 17.1069 19.2891 17.1069ZM21.1791 12.8347C21.4317 12.1752 21.4908 11.9357 21.645 11.1974C21.8025 10.4591 22.0683 8.73316 21.412 8.78238C21.3464 8.78894 21.0511 8.99238 21.0642 8.59207C21.0642 8.59207 21.2841 6.72176 20.7066 4.79894V13.3597C20.8673 13.2941 21.0544 13.1563 21.1791 12.8347ZM24.4111 23.0329V29.1064H25.6612V23.5611C25.2544 23.3872 24.8344 23.21 24.4111 23.0329ZM20.7558 21.4185C20.7394 21.4086 20.723 21.3988 20.7066 21.3922V29.1064H22.0683V22.0189C21.5728 21.7958 21.1233 21.5924 20.7558 21.4185ZM15.1219 0.641602V29.1032H16.7002V0.828633C16.2277 0.71707 15.6994 0.654727 15.1219 0.641602ZM29.1164 24.9852C29.1164 24.9852 28.6833 24.808 28.0073 24.5324V29.1064H29.1164V24.9852Z" fill="#C0C0C0"></path></svg></span>'
+const AURA_SVG = '<span class="eve-icon mt-2 me-2 shadow"><svg width="44" height="46" viewBox="0 0 44 46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.586 21.19c-.82 1.775-1.43 2.5-2.09 2.65-.57 1.705-1.095 4.26-2.74 6.68L24.4 34.885h-4.71l-4.025-4.035c0-.02-.005-.045-.005-.065-1.795-2.495-2.325-5.18-2.915-6.945-.665-.15-1.275-.88-2.09-2.65-.935-2.02-1.79-4.08-.74-5.055.735-.68 1.395-.14 1.72.245-.01-1.445-.01-3.275-.01-5.65 0-2.235.53-3.975 1.345-5.335-.115 3.235 1.445 4.665 1.445 4.665h2.405l2.795 1.805V10.45L16.49 8.13s-2.08-2.765.65-6.345C19.676.62 22.126.58 22.126.58s2.325.035 4.785 1.11c2.84 3.625.725 6.435.725 6.435L24.5 10.45v1.415l2.795-1.805H29.7s1.63-1.49 1.435-4.875c.89 1.39 1.48 3.19 1.48 5.55 0 2.375 0 4.205-.01 5.65.33-.385.985-.925 1.72-.245 1.05.97.195 3.03-.74 5.05Zm.905 21.115-1.345-1.345v-1.6l3.665 2.535 1.38 1.38h5.175c-2.22-3.035-5.66-4.47-8.56-5.015-2.9-.545-5.42-2.645-6.045-3.965-.165-.345-.235-.85-.265-1.405l-3.8 3.805h-5.32l-3.66-3.66c-.03.495-.11.945-.255 1.26-.62 1.32-3.14 3.42-6.04 3.965-2.9.545-6.34 1.985-8.71 5.015h5.18l1.38-1.38 3.665-2.535v1.6L9.59 42.305v1.93l3.04 1.275h18.82l3.04-1.275v-1.93Z" fill="#c0c0c0"></path></svg></span>'
+
 const askQuestion = async (question) => {
   try {
     const res = await getQuestionResponse(
@@ -28,13 +31,17 @@ const askQuestion = async (question) => {
     setStatus(STATUSES.ERROR)
   }
 }
+const scrollToBottom = () => {
+  window.scrollTo(0, document.body.scrollHeight)
+}
 const setStatus = (newStatus) => {
   if (newStatus === STATUSES.READY) {
     document.querySelector('form.ask fieldset').removeAttribute('disabled')
     document.querySelector('.status').innerHTML = ''
   } else if (newStatus === STATUSES.WAITING_FOR_AI) {
     document.querySelector('form.ask fieldset').setAttribute('disabled', 'disabled')
-    document.querySelector('.status').innerHTML = '<div class="alert alert-info" role="alert"><i class="bi bi-info-circle-fill pe-2"></i> ...Waiting for AI...</div>'
+    document.querySelector('.status').innerHTML = ''
+    // document.querySelector('.status').innerHTML = '<div class="alert alert-info" role="alert"><i class="bi bi-info-circle-fill pe-2"></i> ...Waiting for AI...</div>'
   } else {
     document.querySelector('form.ask fieldset').setAttribute('disabled', 'disabled')
     document.querySelector('.status').innerHTML = '<div class="alert alert-danger" role="alert"><i class="bi bi-exclamation-triangle-fill pe-2"></i> ERROR - Please contact us in discord</div>'
@@ -45,32 +52,33 @@ const renderHistory = () => {
   for (const historyItem of history) {
     if (historyItem.human) {
     //   html += `<p class="text-primary">HUMAN: ${historyItem.human}</p>`
-      html += `<div class="d-flex justify-content-start mb-2">
-                    <i class="bi bi-person-fill pt-2 pe-2 fs-4"></i>
-                    <p class="message m-0">${historyItem.human}</p>
+      html += `<div class="d-flex justify-content-end mb-4">
+                    <p class="message m-0 shadow">${historyItem.human}</p>
+                    ${PLAYER_SVG}
                 </div>`
     }
     if (historyItem.ai) {
     //   html += `<p class="text-success">AI: ${historyItem.ai}</p>`
-
-      html += `<div class="d-flex justify-content-end mb-2">
-                    <p class="message m-0 ai">${historyItem.ai}</p>
-                    <i class="bi bi-robot pt-2 ps-2 fs-4"></i>
+      console.log('ai', historyItem.ai)
+      html += `<div class="d-flex justify-content-start mb-4">
+                    ${AURA_SVG}
+                    <p class="message m-0 ai shadow">${historyItem.ai}</p>
                 </div>`
     }
     if (historyItem.relevantURLs) {
-      html += `<p class="text-info mb-2">${historyItem.relevantURLs.map(url => {
+      html += `<p class="text-info mb-4">${historyItem.relevantURLs.map(url => {
         const urlSplit = url.split('/')
         return `<a href="${url}" target="_blank" class="btn btn-outline-info me-2 mb-2">${urlSplit[urlSplit.length - 1]} <i class="bi bi-box-arrow-up-right text-dark"></i></a>`
       }).join('')}</p>`
     }
   }
   document.querySelector('.history').innerHTML = html
+  scrollToBottom()
 }
 const addStreamingDataStart = () => {
-  document.querySelector('.history').innerHTML += `<div class="d-flex justify-content-end mb-2">
-                    <p class="message m-0 ai"></p>
-                    <i class="bi bi-robot pt-2 ps-2 fs-4"></i>
+  document.querySelector('.history').innerHTML += `<div class="d-flex justify-content-start mb-4">
+                    ${AURA_SVG}
+                    <p class="message m-0 ai shadow"><span class="loader-a d-inline-block"></span></p>
                 </div>`
   return document.querySelector('.history').lastChild.querySelector('p.message')
 }
@@ -120,9 +128,13 @@ const getQuestionResponse = (body) => {
               controller.enqueue(value)
               const chunk = new TextDecoder('utf-8').decode(value)
               console.log(chunk)
+              if (text === '') {
+                streamingAnswerEle.innerHTML = ''
+              }
               text += chunk
+
               if (!chunk.startsWith('|||||')) {
-                streamingAnswerEle.textContent += chunk
+                streamingAnswerEle.innerHTML += chunk
               }
 
               return push()
