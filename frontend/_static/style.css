@@ -71,7 +71,6 @@ h1 {
     width: 150px;
     height: 2px;
     background-color: #ba1f7e;
-    display: block;
 }
 
 .alert {
@@ -136,6 +135,7 @@ h1 {
     color: #5ccbcb;
     border-color: #5ccbcb;
     text-transform: uppercase;
+    background-color: black;
     /* -webkit-clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%);
     clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%); */
 }
@@ -143,7 +143,58 @@ h1 {
     background-color: #5ccbcb;
     border-color: #5ccbcb;
 }
+.btn-outline-warning {
+    color: #ba1f7e;
+    border-color: #ba1f7e;
+    color: white;
+}
+.btn-outline-warning:hover {
+    background-color: #ba1f7e !important;
+    border-color: #ba1f7e !important;
+    color: white !important;
+}
+.btn-card {
+    color: white;
+    background-color: #111528 !important;
+    -webkit-clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%);
+    clip-path: polygon(0 0,30px 0,34px 5px,114px 5px,118px 0,100% 0,100% 100%,0 100%);
+    opacity: 0.8;
+}
+.btn-card:hover {
+    background-color: #111528 !important;
+    border-color: #111528 !important;
+    color: white !important;
+    opacity: 1;
+}
+.slide-in {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    
+}
+.slide-in-element {
+    transition: transform .8s,opacity .4s;
+    transition-timing-function: cubic-bezier(.165,.84,.44,1);
+    transition-delay: .2s;
+    -webkit-transform: translateY(50px) translateZ(0);
+    transform: translateY(50px) translateZ(0);
+    display: inline-block;
+    opacity: 0;
+}
+.slide-in-element.active {
+    opacity: 1;
+    transform: translateZ(0);
+}
 
+.width-40 {
+    width: 40px;
+}
+
+.slide-in::before {
+    transition: 2s cubic-bezier(.5,.11,.17,1);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    width: 300px;
+}
 /* 
 Quick EVE Palette
 Website
